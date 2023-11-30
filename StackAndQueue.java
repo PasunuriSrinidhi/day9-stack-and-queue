@@ -82,6 +82,15 @@ class Queue {
         linkedList.append(data);
     }
 
+    public void dequeue() {
+        if (linkedList.head == null) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        System.out.println("Dequeued: " + linkedList.head.data);
+        linkedList.head = linkedList.head.next;
+    }
+
     public void display() {
         Node current = linkedList.head;
         System.out.print("Queue: ");
@@ -117,5 +126,10 @@ public class StackAndQueue {
 
         // Display the queue
         queue.display();
+
+        // Dequeue from the beginning until the queue is empty
+        while (queue.linkedList.head != null) {
+            queue.dequeue();
+        }
     }
 }
