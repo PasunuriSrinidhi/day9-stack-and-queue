@@ -16,6 +16,20 @@ class LinkedList {
         newNode.next = head;
         head = newNode;
     }
+
+    // Append method for Queue
+    public void append(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = newNode;
+    }
 }
 
 class Stack {
@@ -57,6 +71,28 @@ class Stack {
     }
 }
 
+class Queue {
+    LinkedList linkedList;
+
+    public Queue() {
+        this.linkedList = new LinkedList();
+    }
+
+    public void enqueue(int data) {
+        linkedList.append(data);
+    }
+
+    public void display() {
+        Node current = linkedList.head;
+        System.out.print("Queue: ");
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
 public class StackAndQueue {
     public static void main(String[] args) {
         // Create a stack and push elements
@@ -72,5 +108,14 @@ public class StackAndQueue {
         while (stack.peek() != -1) {
             stack.pop();
         }
+
+        // Create a queue and enqueue elements
+        Queue queue = new Queue();
+        queue.enqueue(56);
+        queue.enqueue(30);
+        queue.enqueue(70);
+
+        // Display the queue
+        queue.display();
     }
 }
