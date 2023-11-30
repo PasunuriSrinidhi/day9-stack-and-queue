@@ -29,6 +29,23 @@ class Stack {
         linkedList.add(data);
     }
 
+    public int peek() {
+        if (linkedList.head == null) {
+            System.out.println("Stack is empty");
+            return -1; // Assuming -1 represents an empty stack
+        }
+        return linkedList.head.data;
+    }
+
+    public void pop() {
+        if (linkedList.head == null) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.println("Popped: " + linkedList.head.data);
+        linkedList.head = linkedList.head.next;
+    }
+
     public void display() {
         Node current = linkedList.head;
         System.out.print("Stack: ");
@@ -48,8 +65,12 @@ public class StackAndQueue {
         stack.push(30);
         stack.push(56);
 
-
         // Display the stack
         stack.display();
+
+        // Peek and pop until the stack is empty
+        while (stack.peek() != -1) {
+            stack.pop();
+        }
     }
 }
